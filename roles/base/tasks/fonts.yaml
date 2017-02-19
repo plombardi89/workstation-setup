@@ -1,0 +1,8 @@
+---
+
+- name: ensure fonts are installed
+  with_items: "{{ fonts }}" 
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  
