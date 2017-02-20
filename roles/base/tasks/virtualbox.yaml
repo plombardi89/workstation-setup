@@ -1,6 +1,7 @@
 ---
 
 - name: ensure VirtualBox dependencies are installed
+  become: yes
   dnf:
     name: "{{ item }}"
     state: present
@@ -17,6 +18,7 @@
     - dkms
 
 - name: ensure virtualbox is installed
+  become: yes
   dnf:
     name: "{{ item }}"
     state: latest

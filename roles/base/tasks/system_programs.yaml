@@ -1,0 +1,11 @@
+---
+# file: base/tasks/system_programs.yaml
+#
+# programs that are just available in Fedora repositories and do not require additional repositories
+
+- name: ensure various system programs are the latest installed
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ system_programs }}"
+  become: yes

@@ -1,0 +1,15 @@
+---
+
+- name: ensure docker is installed
+  become: yes
+  dnf:
+    name: docker-engine
+    state: latest
+
+- name: ensure docker starts at boot
+  become: yes
+  service:
+    name: docker
+    enabled: yes
+    state: started
+

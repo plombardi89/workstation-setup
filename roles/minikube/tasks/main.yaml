@@ -1,0 +1,16 @@
+---
+
+- name: ensure minikube is installed
+  get_url:
+    url: "{{ minikube_download_url }}"
+    dest: "{{ install_dir }}"
+    mode: 0755
+    checksum: sha256:{{ checksum }}
+  register: minikube_installed
+
+- name: ensure minikube symlink points to the latest installed
+  file:
+    src: "{{ minikube_installed.dest }}"
+    dest: "{{ install_dir }}/minikube"
+    state: link
+  register: minikube_linked

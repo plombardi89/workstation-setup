@@ -14,6 +14,10 @@ sudo -s dnf install -y \
   "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
   "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
 
+sudo -s dnf config-manager \
+    --add-repo \
+    https://docs.docker.com/engine/installation/linux/repo_files/fedora/docker.repo
+
 sudo -s pip install -U pip virtualenv
 
 # Use --system-site-packages because we need python2-dnf which is installed to the

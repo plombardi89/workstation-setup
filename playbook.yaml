@@ -1,6 +1,27 @@
 ---
+
 - hosts: 127.0.0.1
   connection: local
-  become: yes
+  pre_tasks:
+    - name: ensure $HOME/bin exists
+      become: no
+      file:
+        path: "{{ lookup('ENV', 'HOME') }}/bin"
+        state: directory
+        mode: 0777
+      register: home_bin
   roles:
     - base
+
+    - name: minikube
+      version: v0.16.0
+      checksum: 119a687ce949f48cc7cc0ed3827bcd182d7769968023a0561bf93290ff265d5a
+      install_dir: "{{ home_bin.path }}"
+
+    - name: kubectl
+      kubernetes_version: v1.5.3
+      install_dir: "{{ home_bin.path }}"
+
+    - name: terraform
+      version: 0.8.7
+      install_dir: "{{ home_bin.path }}"

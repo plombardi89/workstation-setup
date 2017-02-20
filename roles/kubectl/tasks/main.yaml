@@ -1,0 +1,15 @@
+---
+
+- name: ensure kubectl is installed
+  get_url:
+    url: "{{ kubectl_download_url }}"
+    dest: "{{ kubectl_install_path }}"
+    mode: 0755
+  register: kubectl_installed
+
+- name: ensure kubectl points to the latest installed
+  file:
+    src: "{{ kubectl_installed.dest }}"
+    dest: "{{ install_dir }}/kubectl"
+    state: link
+  register: kubectl_linked

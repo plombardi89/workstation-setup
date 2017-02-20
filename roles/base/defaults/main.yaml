@@ -2,3 +2,11 @@ fonts:
   - levien-inconsolata-fonts
   - dejavu-sans-mono-fonts
   - google-droid-sans-mono-fonts
+
+system_programs:
+  - firefox
+  - gcc
+  - git
+  - java-1.8.0-openjdk
+  - openvpn
+  - socat

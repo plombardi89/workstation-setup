@@ -1,0 +1,36 @@
+---
+
+- name: ensure terraform is downloaded
+  get_url:
+    url: "{{ terraform_download_url }}"
+    dest: /tmp
+    mode: 0755
+  register: terraform_downloaded
+
+- debug:
+    var: terraform_downloaded
+
+- name: ensure terraform is unpacked
+  unarchive:
+    src: "{{ terraform_downloaded.dest }}"
+    dest: /tmp
+    remote_src: yes
+  register: terraform_unpacked
+
+- name: remove terraform archive
+  file:
+    path: "{{ terraform_downloaded.dest }}"
+    state: absent
+
+- name: move terraform binary
+  command: mv /tmp/terraform {{ terraform_install_path }}
+  args:
+    creates: "{{ terraform_install_path }}"
+  register: terraform_installed
+
+- name: ensure terraform symlink points to the latest installed
+  file:
+    src: "{{ terraform_install_path }}"
+    dest: "{{ install_dir }}/terraform"
+    state: link
+  register: terraform_linked

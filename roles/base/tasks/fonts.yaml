@@ -1,7 +1,8 @@
 ---
 
 - name: ensure fonts are installed
-  with_items: "{{ fonts }}" 
+  with_items: "{{ fonts }}"
+  become: yes
   dnf:
     name: "{{ item }}"
     state: latest
