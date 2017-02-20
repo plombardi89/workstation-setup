@@ -3,3 +3,4 @@
 - include: fonts.yaml
 - include: virtualbox.yaml
 - include: docker.yaml
+- include: system_programs.yaml

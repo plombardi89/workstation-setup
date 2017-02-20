@@ -7,9 +7,6 @@
     mode: 0755
   register: terraform_downloaded
 
-- debug:
-    var: terraform_downloaded
-
 - name: ensure terraform is unpacked
   unarchive:
     src: "{{ terraform_downloaded.dest }}"
