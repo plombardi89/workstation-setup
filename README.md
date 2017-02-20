@@ -12,7 +12,11 @@ Bootstraps a Fedora 25 workstation (specifically mine). I'll take PR's to make t
 
 4. `./bootstrap.bash`
 5. `. ~/venv/py2/bin/activate.fish`
-6. `ansible-playbook playbook.yaml`
+6. `ansible-playbook playbook.yaml -K`
+
+## TODO
+
+1. Replace `bootstrap.bash` with a FISH compatible script.
 
 ## License
 
