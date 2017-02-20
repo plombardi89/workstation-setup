@@ -8,7 +8,7 @@
       file:
         path: "{{ lookup('ENV', 'HOME') }}/bin"
         state: directory
-        mode: 0777
+        mode: 0755
       register: home_bin
   roles:
     - base

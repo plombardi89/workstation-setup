@@ -4,3 +4,4 @@
 - include: virtualbox.yaml
 - include: docker.yaml
 - include: system_programs.yaml
+- include: system_rubygems.yaml

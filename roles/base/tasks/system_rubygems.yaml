@@ -1,0 +1,7 @@
+---
+
+- name: ensure various system rubygems are the latest installed
+  gem:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ system_rubygems }}"
