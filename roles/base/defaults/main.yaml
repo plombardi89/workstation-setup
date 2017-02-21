@@ -8,9 +8,10 @@ system_programs:
   - gcc
   - git
   - java-1.8.0-openjdk
+  - kate
   - openvpn
-  - socat
   - ruby-devel
+  - socat
 
 system_rubygems:
   - travis
